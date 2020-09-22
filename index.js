@@ -31,8 +31,9 @@ client.on('ready', () => {
     }
   })
 
+  // Setting the status of the bot (Restricted to those with the Owner Role)
   command(client, 'status', (message) => {
-    if (message.member.roles.cache.find(r => r.name === "Owner")) {
+    if (message.member.hasPermission("OWNER")) {
       const content = message.content.replace('$status ', '')
 
       client.user.setPresence({
